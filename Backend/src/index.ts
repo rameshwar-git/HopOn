@@ -1,12 +1,13 @@
-import express = require("express");
+import express from 'express';
+import {connectDB} from '@config/db';
+import passengerRoutes from '@routes/passenger.routes/passenger.routes';
+import dotnet from 'dotenv';
+dotnet.config();
 
-  const app = express();
-  const port = process.env.PORT || 3000;
+const app =express();
+app.use(express.json());
+app.use('/api',passengerRoutes);
+connectDB();
 
-  app.get('/', (req: express.Request, res: express.Response) => {
-    res.send('Hello from TypeScript Express!');
-  });
-
-  app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-  });
+const PORT = process.env.PORT;
+app.listen(PORT,()=> console.log(`Server running on port ${PORT}`));
