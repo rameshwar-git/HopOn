@@ -1,0 +1,36 @@
+import { Request , Response } from 'express';
+import LocationModel from '@/models/location/UserLocation';
+
+//creating new location entry in DB
+export const createLocation = async (req: Request, res: Response, userId: any) => {
+    try{
+        const location = await LocationModel.create({...req.body, userId});
+        return location;
+    } catch(err:any){
+        res.status(500).json({error: err.message});
+    }
+};
+
+//update user location by userId
+export const updateLocation = async (req: Request, res: Response) => {
+    try{
+        const { userId } = req.params;
+        if(!userId){
+            return res.status(400).json({error: "UserId is required"});
+        }
+        const location = await LocationModel.findOneAndUpdate({ userId },{...req.body, timestamp: new Date()});
+        res.status(200);
+        
+    } catch(err:any){
+        res.status(500).json({error: err.message});
+    }
+};
+
+//get user location by userId
+export const getLocation = async (req: Request, res: Response) => {
+    try{
+        //todo
+    } catch(err:any){
+        res.status(500).json({error: err.message});
+    }
+};

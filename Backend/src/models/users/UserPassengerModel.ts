@@ -1,8 +1,7 @@
 import {Schema, model} from 'mongoose';
 import { users } from '@models/interfaces/users';
 
-const driverSchema = new Schema<users>({
-    id: {type: String, required: true, unique: true},
+const passengerSchema = new Schema<users>({
     name: {type: String, required: true},
     dob: {type: Date, required: true},
     gender: {type: String, required: true},
@@ -12,6 +11,5 @@ const driverSchema = new Schema<users>({
     createdAt: {type: Date, default: Date.now},
     updatedAt: {type: Date, default: Date.now}
 });
-
-const DriverModel = model<users>('Driver', driverSchema);
-export default DriverModel;
+const PassengerModel = model<users>('Passenger', passengerSchema);
+export default PassengerModel;
