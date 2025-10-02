@@ -19,18 +19,8 @@ export const updateLocation = async (req: Request, res: Response) => {
             return res.status(400).json({error: "UserId is required"});
         }
         const location = await LocationModel.findOneAndUpdate({ userId },{...req.body, timestamp: new Date()});
-        res.status(200);
-        
+        res.status(200).json({'Status': 'SUCCESS'});
     } catch(err:any){
-        res.status(500).json({error: err.message});
-    }
-};
-
-//get user location by userId
-export const getLocation = async (req: Request, res: Response) => {
-    try{
-        //todo
-    } catch(err:any){
-        res.status(500).json({error: err.message});
+        res.status(500).json({'Status': 'FAILED'});
     }
 };
