@@ -1,13 +1,14 @@
-import { StyleSheet } from 'react-native';
-
+import { StyleSheet, View } from 'react-native';
 import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { Fonts  } from '@/constants/theme';
 export default function HomeScreen() {
-  return (
-    <ThemedView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <ThemedText>HomeScreen</ThemedText>
-    </ThemedView>
+    return (
+        <SafeAreaProvider>
+            <SafeAreaView style={{ flex: 1 }}>
+             <ThemedText>Hello World</ThemedText>
+            </SafeAreaView>
+        </SafeAreaProvider>
     
   );
 }
@@ -21,12 +22,5 @@ const styles = StyleSheet.create({
   stepContainer: {
     gap: 8,
     marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+  }
 });
