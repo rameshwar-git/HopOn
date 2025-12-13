@@ -12,8 +12,7 @@ export default function SigninScreen() {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     return (
-        <View style={styles.container}>
-       <View style={styles.outline} >
+        <View>
         <Card style={styles.card}>
          <TextInputComponent
             placeholderText="Email | Username"
@@ -31,7 +30,6 @@ export default function SigninScreen() {
             title="Sign In"
             isDisabled={email.length === 0 || password.length === 0}
             onPress={() => {
-                // Handle sign-in logic here
                 console.log("Signing in with", email, password);
             }}
         />
@@ -40,7 +38,6 @@ export default function SigninScreen() {
             onPress={() => navigatrion.navigate("login/signup" as never)}
         />
         </Card>
-       </View>
        </View>
     );
 }

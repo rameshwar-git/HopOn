@@ -21,4 +21,7 @@ app.use('/api', tripRoutes);
 
 
 const PORT = process.env.PORT;
-app.listen(PORT,()=> console.log(`Server running on port ${PORT}`));
+
+app.listen(Number(PORT), "10.240.8.19", () => {
+  console.log(`🚀 Server running at http://10.240.8.19:${PORT}`);
+});
