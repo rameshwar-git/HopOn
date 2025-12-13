@@ -1,13 +1,18 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import { ThemedText } from '@/components/themed-text';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import '../login/signin';
 import { Fonts  } from '@/constants/theme';
+import SigninScreen from '../login/signin';
 export default function HomeScreen() {
+  
     return (
         <SafeAreaProvider>
-            <SafeAreaView style={{ flex: 1 }}>
-             <ThemedText>Hello World</ThemedText>
+          <ScrollView >
+            <SafeAreaView >
+              <SigninScreen/>
             </SafeAreaView>
+            </ScrollView>
         </SafeAreaProvider>
     
   );

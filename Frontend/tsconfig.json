@@ -3,9 +3,10 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"],
+      "@components/*": ["./components/*"],
+      "@assets/*": ["./assets/*"],
+      "@ui/*": ["./components/ui/*"]
     }
   },
   "include": [
