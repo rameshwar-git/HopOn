@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, Text, View, Alert, Platform, Dimensions, ActivityIndicator, TouchableOpacity } from "react-native";
 import * as Location from "expo-location";
 
-const DEFAULT_API = "http://10.240.8.19:5000";
+const DEFAULT_API = "http://192.168.1.11:5000";
 const API_BASE = (process.env.API_URI as string) || DEFAULT_API;
 
 type UserLocation = {
