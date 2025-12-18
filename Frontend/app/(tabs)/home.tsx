@@ -1,16 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, Text, View, Alert, Platform, Dimensions, ActivityIndicator, TouchableOpacity } from "react-native";
 import * as Location from "expo-location";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { router } from "expo-router";
+import { env } from "../env";
 
-const DEFAULT_API = "http://192.168.1.11:5000";
-const API_BASE = (process.env.API_URI as string) || DEFAULT_API;
-
+//const DEFAULT_API = process.env.API_URI;
+const API_BASE = env.API_URL;
 type UserLocation = {
   userId: string;
   currentLocation: { latitude: number; longitude: number } | null;
 };
 
-export default function App() {
+export default function HomeScreen() {
   const [loading, setLoading] = useState(true);
   const [allLocations, setAllLocations] = useState<UserLocation[]>([]);
   const [mapComponents, setMapComponents] = useState<{ MapView?: any; Marker?: any } | null>(null);
@@ -23,6 +25,16 @@ export default function App() {
   const mapHeight = Math.round(Dimensions.get("window").height * 0.55);
 
   useEffect(() => {
+    try {
+      const userId = AsyncStorage.getItem("userId");
+      const validate = fetch(`${API_BASE}/passenger/${userId}`);
+      if(!validate){
+        AsyncStorage.clear();
+        router.replace("/auth/signin");
+      }
+    } catch (err: any) {
+      console.log(err.message);
+    }
     if (Platform.OS !== "web") {
       try {
         const Maps = require("react-native-maps");
@@ -56,8 +68,7 @@ export default function App() {
 
   const fetchAndSetAllLocations = async () => {
     try {
-      const url = `${API_BASE}/api/location/allLocation`;
-      console.log("Fetching URL →", url);
+      const url = `${API_BASE}/location/allLocation`;
 
       const res = await fetch(url);
       if (!res.ok) {

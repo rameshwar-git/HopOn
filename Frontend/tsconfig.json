@@ -3,12 +3,27 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": ["./*"],
-      "@components/*": ["./components/*"],
-      "@assets/*": ["./assets/*"],
-      "@ui/*": ["./components/ui/*"],
-      "@models/*": ["./models/*"],
-      "@hooks/*": ["./hooks"]
+      "@/*": [
+        "./*"
+      ],
+      "@app": [
+        "./app"
+      ],
+      "@components/*": [
+        "./components/*"
+      ],
+      "@assets/*": [
+        "./assets/*"
+      ],
+      "@ui/*": [
+        "./components/ui/*"
+      ],
+      "@models/*": [
+        "./models/*"
+      ],
+      "@hooks/*": [
+        "./hooks"
+      ]
     }
   },
   "include": [

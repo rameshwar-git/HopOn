@@ -21,7 +21,7 @@ app.use('/api', tripRoutes);
 
 
 const PORT = process.env.PORT;
-const NetworkID = '192.168.1.11';
+const NetworkID = '192.168.1.21';
 
 app.listen(Number(PORT),NetworkID,() => {
   console.log(`🚀 Server running at ${NetworkID}:${PORT}`);

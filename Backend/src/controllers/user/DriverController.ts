@@ -12,7 +12,11 @@ export const createDriver = async (req: Request, res: Response) =>{
         const userLocation = await createLocation(req, res, userDriver._id);
         //Create vehicle entry for the new driver
         const userVehicle = await createVehicle(req, res, userDriver._id);
-        res.status(201).json({'Status' : 'SUCCESS' });
+        res.status(201).json({
+            userId:userDriver._id,
+            locationId:userLocation?._id,
+            vehicleid:userVehicle?._id
+        });
     } catch(err:any){
         res.status(500).json({error: err.message});
     }
